@@ -12,15 +12,15 @@ const quotes = [
   "You do what needs to be done, not what is easy, nor what is normal.",
   "You don't give up when you fail, you try to find out what went wrong, you learn from your mistakes and come back stronger.",
   "You don’t lose confidence when things are not going your way and you stay humble while you are on the peak of success.",
-  "Dont Let Dreams Be Dreams.",
   "You are confined only by the walls you build YOURSELF.",
   "Dont go with the flow. Be the flow.",
   "If you want to be successful, you must respect one rule - Never Lie to Yourself.",
-  "The only thing standing between you and your goals is the bullshit story you keep telling yourself.",
   "No matter how hard you try, You will always miss out on something in life. Let's just enjoy the moment.",
   "Everything you have ever wanted is on the other side of Fear.",
   "Simplicity is the ultimate sophistication.",
-  "The greatest prison we live in, is what other people think."
+  "The greatest prison we live in, is what other people think.",
+  "Better to be a warrior in a garden, than a gardener in a war.",
+  "Love is giving someone the power to destroy you, and trust he/she won't do it."
 ]
 
 setupPage()
