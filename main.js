@@ -1,6 +1,7 @@
 import './style.css'
 
 import {generateContent} from './wrapper'
+const intervalTimer = 7000;
 const appState = {
   currIndex: -1
 }
@@ -20,24 +21,37 @@ const quotes = [
   "Simplicity is the ultimate sophistication.",
   "The greatest prison we live in, is what other people think.",
   "Better to be a warrior in a garden, than a gardener in a war.",
-  "Love is giving someone the power to destroy you, and trust he/she won't do it."
+  "Love is giving someone the power to destroy you, and trust he/she won't do it.",
+  "Do not stop when you are tired, stop when you are done."
 ]
-
+let interval = null;
 setupPage()
 
 function setupPage() {
   const app = document.getElementById('app')
   const page = setupQuote()
-  setInterval(() => {
-    setupQuote()
-  }, 7000)
+  if (interval) {
+    clearInterval(interval);
+  }
+  setQuoteInterval();
   app.append(page)
 }
 
-function setupQuote() {
-  appState.currIndex += 1
+function setupQuote(type) {
+  if (interval) {
+    clearInterval(interval);
+  }
+  setQuoteInterval();
+  if (type === 'decrement') {
+    appState.currIndex -=1
+  } else {
+    appState.currIndex += 1
+  }
   if (appState.currIndex >= quotes.length) {
-    appState.currIndex = 0
+    appState.currIndex = 0;
+  }
+  if (appState.currIndex < 0) {
+    appState.currIndex = 0;
   }
   const data = {
     type: 'div',
@@ -53,4 +67,24 @@ function setupQuote() {
   }
   const quotesElm = generateContent(data)
   return quotesElm
+}
+
+document.addEventListener("touchstart", function(event) {
+  setupQuote();
+}, false);
+
+
+document.addEventListener("keydown", function(event) {
+  if ([39, 40].indexOf(event.keyCode) > -1) {
+    setupQuote();
+  }
+  if ([37, 38].indexOf(event.keyCode) > -1) {
+    setupQuote('decrement');
+  }
+});
+
+function setQuoteInterval() {
+  interval = setInterval(() => {
+    setupQuote()
+  }, intervalTimer)
 }
